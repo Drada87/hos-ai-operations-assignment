@@ -1,0 +1,47 @@
+RAW INPUT — TASK 2 (FLIGHT FINDER TOOL)
+Trip request from the founder. Build a tool that takes a brief like this and returns the best itinerary.
+
+----------------------------------------------------------------
+TRIP BRIEF
+----------------------------------------------------------------
+Traveler: the founder (1 passenger)
+Home airport: San Francisco (SFO). OAK or SJC acceptable if it clearly beats SFO.
+
+This is a MULTI-CITY trip next month (July):
+
+  Leg 1 — SFO -> Boston (BOS)
+    Depart: Mon Jul 13
+    HARD CONSTRAINT: must land in Boston no later than 5:00pm local
+    (there is a 7:00pm dinner with the pilot partner that cannot be missed).
+
+  Leg 2 — Boston (BOS) -> New York City (JFK or LGA, EWR acceptable)
+    Travel: Wed Jul 15, after 3:00pm (the summit ends at 2:00pm; needs ~1hr buffer to reach the airport).
+    Must be in NYC by end of day Jul 15.
+
+  Leg 3 — New York -> SFO (home)
+    Depart: Fri Jul 17
+    PREFERENCES: not a red-eye; must land at SFO before midnight Jul 17.
+
+----------------------------------------------------------------
+PREFERENCES & SCORING (these intentionally conflict — the tool must trade them off)
+----------------------------------------------------------------
+- Budget: keep total airfare under $1,500 if at all possible.
+  BUT the founder will pay up to $400 more to avoid a red-eye OR to save 3+ hours of total travel time.
+- Nonstop strongly preferred. A connection is OK only if it saves >$250 or is the only option.
+- Layovers: no connection shorter than 45 min or longer than 2.5 hrs.
+- Airline: mild preference for United or its partners (founder has status) — worth a small bonus, NOT a hard rule.
+- Fare class: NO basic economy (founder wants a seat assignment + to keep miles).
+- Bags: carry-on only. Seat: aisle preferred.
+- Time-of-day: dislikes departures before 7:00am.
+
+----------------------------------------------------------------
+WHAT THE TOOL SHOULD OUTPUT
+----------------------------------------------------------------
+1. A single recommended end-to-end itinerary (all 3 legs) with airline, flight #s, times, layovers, fare class, and TOTAL price + TOTAL travel time.
+2. A clear, ranked runner-up, and one sentence on why the recommendation beat it.
+3. An explicit note of any constraint that could not be satisfied and the tradeoff made.
+4. Show your scoring logic (how price vs. time vs. red-eye vs. airline preference were weighted).
+
+Use real/live fare data if you can reach it. If you can't, clearly state your data source/approach
+and use realistic sample fares — but the SCORING and SELECTION logic must be real and reusable for a
+different trip brief.
