@@ -39,6 +39,7 @@ class Flight:
 
     # Number of layovers in the itinerary segment.
     layovers: int = 0
+    layover_minutes: int = 0
 
     red_eye: bool = False
     """True when the flight departs late at night or arrives early morning."""
@@ -46,21 +47,15 @@ class Flight:
 
 @dataclass
 class Itinerary:
-    """
-    Complete travel option composed of one or more flights.
+    """A complete travel option composed of multiple flight legs."""
+    itinerary_id: str
+    flights: list[Flight] = field(default_factory=list)
 
-    The scoring engine evaluates itineraries rather than individual flights.
-    """
-
-    flights: list[Flight]
-    total_price: float
-    total_duration_minutes: int
+    total_price: float = 0.0
+    total_duration_minutes: int = 0
 
     score: float = 0.0
-    """Calculated by the scoring engine."""
-
-    ranking_reason: str = ""
-    """Explanation of why this itinerary received its ranking."""
+    reasons: list[str] = field(default_factory=list)
 
 
 @dataclass
@@ -115,8 +110,6 @@ class Recommendation:
 
     tradeoffs: list[str] = field(default_factory=list)
     unsatisfied_constraints: list[str] = field(default_factory=list)
-    total_price: float = 0.0
-    total_duration_minutes: int = 0
 
     scoring_summary: str = ""
     """Human-readable summary of how competing factors were weighted."""
