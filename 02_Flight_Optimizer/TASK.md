@@ -2,88 +2,17 @@
 
 ## Objective
 
-Create the file:
-
-data/sample_flights.csv
-
----
-
-## Context
-
-This dataset will be used by the Flight Recommendation Engine.
-
-The goal is to evaluate a recommendation algorithm, not to simulate every possible flight.
-
-The CSV should contain realistic flight options for the founder's three-leg business trip.
-
-Trip:
-
-- San Francisco → Boston
-
-- Boston → New York
-
-- New York → San Francisco
-
----
-
-## Required Columns
-
-airline
-
-flight_number
-
-origin
-
-destination
-
-departure_time
-
-arrival_time
-
-duration_minutes
-
-price
-
-fare_class
-
-is_nonstop
-
-layovers
-
-red_eye
-
----
+Implement `src/data_loader.py`
 
 ## Requirements
 
-Generate realistic flight options.
+- Read `trip_brief.txt`
+- Read `sample_flights.csv`
+- Parse the trip brief into a `TripRequest`
+- Group flights by `itinerary_id`
+- Build `Flight` objects
+- Build `Itinerary` objects
+- Return both the `TripRequest` and the list of `Itinerary` objects
+- Do not implement scoring
+- Do not modify `models.py`
 
-Include multiple alternatives for every leg.
-
-Include:
-
-- United
-
-- Delta
-
-- American
-
-- JetBlue
-
-Create meaningful trade-offs.
-
-Examples:
-
-- cheaper but longer flights
-
-- expensive nonstop flights
-
-- one or two red-eye options
-
-- flights that violate preferences
-
-- flights that satisfy every requirement
-
-Use realistic prices and flight durations.
-
-Return ONLY the CSV.
