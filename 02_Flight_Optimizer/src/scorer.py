@@ -1,9 +1,6 @@
 from .models import Itinerary, TripRequest
 
 WEIGHTS = {
-    ...
-}
-WEIGHTS = {
     # Budget
     "within_budget": 25,
     "budget_flexible": 5,
@@ -21,7 +18,9 @@ WEIGHTS = {
     "invalid_layover": -50,
 }
 
-from .models import Itinerary, TripRequest
+# Simplified implementation.
+# Future version should evaluate budget flexibility
+# against travel time and red-eye trade-offs.
 
 def score_budget(
     itinerary: Itinerary,
@@ -32,34 +31,51 @@ def score_budget(
         return (0, "")
 
     if itinerary.total_price <= request.budget_max_usd:
-        return (WEIGHTS["within_budget"], "Total price is within budget")
+        return (
+            WEIGHTS["within_budget"],
+            "Total price is within budget",
+        )
 
-    if itinerary.total_price <= request.budget_max_usd + 400:
-        return (WEIGHTS["budget_flexible"], "Total price is within flexible budget")
+    flexible_budget = request.budget_max_usd + 400
 
-    return (WEIGHTS["over_budget"], "Total price exceeds flexible budget")
+    if itinerary.total_price <= flexible_budget:
+        return (
+            WEIGHTS["budget_flexible"],
+            "Total price is within flexible budget",
+        )
 
+    return (
+        WEIGHTS["over_budget"],
+        "Total price exceeds flexible budget",
+    )
 
 def score_airline(
     itinerary: Itinerary,
     request: TripRequest,
 ) -> tuple[int, str]:
     """Evaluate the itinerary against the founder's airline preferences."""
+
     if not request.preferred_airlines:
         return (0, "")
 
     preferred = set(request.preferred_airlines)
-    if any(flight.airline in preferred for flight in itinerary.flights):
-        return (WEIGHTS["preferred_airline"], "Includes a preferred airline")
+
+    if any(
+        flight.airline in preferred
+        for flight in itinerary.flights
+    ):
+        return (
+            WEIGHTS["preferred_airline"],
+            "Includes a preferred airline",
+        )
 
     return (0, "")
-
 
 def score_nonstop(
     itinerary: Itinerary,
 ) -> tuple[int, str]:
     """Reward nonstop itineraries and penalize connections."""
-    if all(flight.is_nonstop for flight in itinerary.flights):
+    if all(flight.layovers == 0 for flight in itinerary.flights):
         return (WEIGHTS["nonstop"], "All flights are nonstop")
 
     return (WEIGHTS["connection"], "Itinerary includes connecting flights")
@@ -88,7 +104,6 @@ def score_red_eye(
         return (WEIGHTS["red_eye"], "Includes a red-eye flight")
 
     return (0, "")
-
 
 def score_departure_time(
     itinerary: Itinerary,
@@ -148,6 +163,10 @@ def score_itinerary(
 
     itinerary.score = sum(points for points, _ in components)
     itinerary.reasons = [reason for _, reason in components if reason]
+    itinerary.reasons.insert(
+        0,
+        f"Final score: {itinerary.score}",
+    )
     return itinerary
 
 

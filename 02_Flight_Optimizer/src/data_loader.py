@@ -35,6 +35,7 @@ def _row_to_flight(row: pd.Series) -> Flight:
         fare_class=str(row["fare_class"]),
         is_nonstop=_parse_bool(row["is_nonstop"]),
         layovers=int(row["layovers"]),
+        layover_minutes=int(row["layover_minutes"]),
         red_eye=_parse_bool(row["red_eye"]),
     )
 
@@ -106,6 +107,7 @@ def build_itineraries(flights: list[Flight]) -> list[Itinerary]:
         leg_flights = sorted(grouped[itinerary_id], key=lambda f: f.departure_time)
         itineraries.append(
             Itinerary(
+                itinerary_id=itinerary_id,
                 flights=leg_flights,
                 total_price=sum(flight.price for flight in leg_flights),
                 total_duration_minutes=sum(
