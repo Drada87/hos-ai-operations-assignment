@@ -4,7 +4,8 @@ from src.metrics import calculate_metrics
 from src.dashboard import render_dashboard
 
 
-def main():
+def main() -> None:
+    """Run the Live Air Traffic Dashboard."""
 
     df = fetch_states()
 

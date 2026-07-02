@@ -23,6 +23,16 @@ STATE_COLUMNS = [
     "position_source",
 ]
 
+NUMERIC_COLUMNS = [
+    "longitude",
+    "latitude",
+    "baro_altitude",
+    "geo_altitude",
+    "velocity",
+    "vertical_rate",
+    "true_track",
+]
+
 
 def fetch_states() -> pd.DataFrame:
     """
@@ -40,16 +50,13 @@ def fetch_states() -> pd.DataFrame:
     """
 
     try:
-        response = requests.get(API_URL, timeout=30)
+        response = requests.get(API_URL, timeout=15)
         response.raise_for_status()
 
-    except requests.RequestException as exc:
-        raise RuntimeError(
-            f"Unable to retrieve data from OpenSky API: {exc}"
-        ) from exc
+    except requests.RequestException:
+        return pd.DataFrame(columns=STATE_COLUMNS)
 
     payload = response.json()
-
     states = payload.get("states")
 
     if not states:
@@ -67,19 +74,15 @@ def fetch_states() -> pd.DataFrame:
         .str.strip()
     )
 
-    numeric_columns = [
-        "longitude",
-        "latitude",
-        "baro_altitude",
-        "geo_altitude",
-        "velocity",
-        "vertical_rate",
-        "true_track",
-    ]
-
-    df[numeric_columns] = df[numeric_columns].apply(
+    df[NUMERIC_COLUMNS] = df[NUMERIC_COLUMNS].apply(
         pd.to_numeric,
         errors="coerce",
+    )
+
+    # Show the most recently updated aircraft first
+    df = df.sort_values(
+        by="last_contact",
+        ascending=False,
     )
 
     return df
