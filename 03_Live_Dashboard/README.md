@@ -1,11 +1,9 @@
-```
 # ✈️ Live Air Traffic Dashboard
 
 ![Dashboard](dashboard.png)
 
 A real-time dashboard built with Streamlit that visualizes live aircraft data from the OpenSky Network API.
-
----
+```
 
 ## Features
 
@@ -28,35 +26,20 @@ A real-time dashboard built with Streamlit that visualizes live aircraft data fr
 - Requests
 
 ---
-
 ## Project Structure
 
+```text
 03_Live_Dashboard/
 
-│
-
-├── [app.py](http://app.py)
-
-├── [README.md](http://README.md)
-
+├── app.py
+├── README.md
 ├── requirements.txt
-
 │
-
 └── src/
-
+    ├── api.py
+    ├── dashboard.py
+    └── metrics.py
 ```
-├── [api.py](http://api.py)
-
-├── [dashboard.py](http://dashboard.py)
-
-└── [metrics.py](http://metrics.py)
-```
-
----
-
-
-
 ## Installation
 
 Clone the repository:
@@ -79,27 +62,18 @@ pip install -r requirements.txt
 
 ---
 
-
-
 ## Run the application
 
 ```bash
-
-streamlit run [app.py](http://app.py)
-
+streamlit run app.py
+```
 ```
 
 The dashboard will be available at:
-
 ```
-
-[http://localhost:8501](http://localhost:8501)
-
+http://localhost:8501
 ```
-
 ---
-
-
 
 ## Dashboard Overview
 
@@ -113,17 +87,11 @@ The dashboard includes:
 
 ---
 
-
-
 ## Data Source
 
 OpenSky Network REST API
 
-[https://opensky-network.org/](https://opensky-network.org/)
-
----
-
-
+https://opensky-network.org/ 
 
 ## Notes
 
@@ -131,8 +99,6 @@ OpenSky Network REST API
 - If the OpenSky API is temporarily unavailable, the dashboard displays a notification and automatically retries on the next refresh.
 
 ---
-
-
 
 ## Author
 
