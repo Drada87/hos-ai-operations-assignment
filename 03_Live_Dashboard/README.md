@@ -2,9 +2,8 @@
 # ✈️ Live Air Traffic Dashboard
 
 ![Dashboard](dashboard.png)
-```
 
- A real-time dashboard built with Streamlit that visualizes live aircraft data from the OpenSky Network API.
+A real-time dashboard built with Streamlit that visualizes live aircraft data from the OpenSky Network API.
 
 ---
 
