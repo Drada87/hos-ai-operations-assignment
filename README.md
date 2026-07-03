@@ -19,9 +19,7 @@ A practical knowledge management strategy designed to centralize organizational 
 
 ---
 
-
-
-### 02. Flight Recommendation Engine
+### ✈️ [02. Flight Recommendation Engine](02_Flight_Optimizer/)
 
 A modular Python application that evaluates and ranks multi-city flight itineraries using weighted business rules and traveler preferences.
 
@@ -35,9 +33,7 @@ A modular Python application that evaluates and ranks multi-city flight itinerar
 
 ---
 
-
-
-### 03. Live Air Traffic Dashboard
+### 📊 [03. Live Air Traffic Dashboard](03_Live_Dashboard/)
 
 A Streamlit dashboard that visualizes live aircraft data from the OpenSky Network API.
 
@@ -50,9 +46,6 @@ A Streamlit dashboard that visualizes live aircraft data from the OpenSky Networ
 - Automatic refresh
 
 ---
-
-
-
 ## Technologies Used
 
 - Python 3.12
@@ -62,9 +55,6 @@ A Streamlit dashboard that visualizes live aircraft data from the OpenSky Networ
 - Requests
 
 ---
-
-
-
 ## Design Principles
 
 Across all three tasks, the project follows the same engineering principles:
@@ -77,9 +67,6 @@ Across all three tasks, the project follows the same engineering principles:
 - Low coupling and high cohesion
 
 ---
-
-
-
 ## Author
 
 **David Rada**
