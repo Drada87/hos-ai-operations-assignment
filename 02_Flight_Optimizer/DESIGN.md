@@ -43,8 +43,6 @@ Ranks candidate itineraries and generates:
 
 ---
 
-
-
 ## Design Principles
 
 - Single Responsibility Principle
@@ -58,13 +56,9 @@ Ranks candidate itineraries and generates:
 
 ---
 
-
-
 ## Module Responsibilities
 
-
-
-### [models.py](http://models.py)
+### models.py 
 
 Defines domain models.
 
@@ -72,14 +66,14 @@ Defines domain models.
 
 Loads input data.
 
-### [scorer.py](http://scorer.py)
+### scorer.py 
 
 Evaluates itineraries.
 
-### [recommender.py](http://recommender.py)
+### recommender.py
 
 Generates ranked recommendations.
 
-### [app.py](http://app.py)
+### app.py
 
 Presentation layer only.
