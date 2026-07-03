@@ -1,4 +1,4 @@
-# Company Second Brain Strategy
+#Company Second Brain Strategy
 
 ## Overview
 
@@ -11,7 +11,7 @@ The strategy prioritizes simplicity, low-friction adoption, and long-term mainta
 ## Scope
 
 The proposed Second Brain is designed to manage:  
-  
+
 - Strategic knowledge (goals, priorities, and company direction)  
 - Decisions and meeting outcomes  
 - Active projects and operational documentation  
@@ -79,7 +79,7 @@ AI enhances retrieval by summarizing long documents, surfacing related knowledge
 
 The goal is not simply to search documents, but to make organizational knowledge accessible, trustworthy, and actionable months after it was created.
 
-## Maintain
+##Maintain
 
 A Second Brain only creates value if its information remains current and trustworthy. Rather than relying on occasional documentation initiatives, maintenance should become part of the team's regular workflow.
 
@@ -107,14 +107,6 @@ This phased rollout allows the team to adopt the system naturally, making docume
 
 ## Architecture Diagram
 
-```
-The diagram below summarizes the proposed knowledge flow, from information capture to reliable knowledge retrieval.
+The diagram below summarizes the proposed knowledge flow...
 
 ![Company Second Brain Architecture](assets/second_brain_diagram.png)
-```
-
-
-
-## Conclusion
-
-This strategy provides a practical and scalable approach to building a Company Second Brain that captures organizational knowledge with minimal friction, keeps information organized over time, and enables fast, reliable access for the entire team.

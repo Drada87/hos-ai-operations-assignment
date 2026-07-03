@@ -301,3 +301,7 @@ This project emphasizes:
 - Explainable recommendation logic
 - Reusable scoring engine
 
+## Additional Documentation  
+  
+For more details about the system architecture and design decisions, see [[DESIGN.md](http://DESIGN.md)]([DESIGN.md](http://DESIGN.md)).
+

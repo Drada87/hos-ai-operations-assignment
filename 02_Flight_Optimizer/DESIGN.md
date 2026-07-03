@@ -1,49 +1,85 @@
-# Trip Brief (TXT)
+# Flight Recommendation Engine Design
 
-```
-    │
+## Objective
 
-    ▼
-```
+This project implements a reusable recommendation engine that evaluates complete flight itineraries based on hard constraints and weighted traveler preferences.
 
-**Data Loader**
+The goal is not to build a flight search engine, but to provide a modular decision engine that can be reused with different trip requests.
 
-Loads the trip brief and flight data from local files or external providers.
+---
 
-```
-    │
+## Architecture
 
-    ▼
-```
-
+Trip Brief (TXT)
+↓
+Data Loader
+↓
 Trip Request
-
-Structured representation of the traveler requirements.
-
-```
-    │
-
-    ▼
-```
-
-**Scoring Engine**
-
-Applies hard constraints, evaluates weighted preferences, and assigns a final score to each itinerary.
-
-```
-    │
-
-    ▼
-```
-
+↓
+Scoring Engine
+↓
 Recommendation Engine
 
-Ranks the itineraries and selects:
+### Data Loader
 
-• Best itinerary
+Loads the trip brief and flight dataset from local files.
 
-• Runner-up
+### Trip Request
 
-• Tradeoffs
+Represents the traveler requirements as structured domain objects.
 
-• Unsatisfied constraints
+### Scoring Engine
+
+Applies business rules and weighted preferences to evaluate every itinerary.
+
+### Recommendation Engine
+
+Ranks candidate itineraries and generates:
+
+- Best itinerary
+- Runner-up
+- Tradeoffs
+- Unsatisfied constraints
+
+---
+
+
+
+## Design Principles
+
+- Single Responsibility Principle
+- Modular architecture
+- Python dataclasses
+- Type hints where appropriate
+- Separation of concerns
+- Readability over clever code
+- Avoid unnecessary abstractions
+- PEP 8 compliance
+
+---
+
+
+
+## Module Responsibilities
+
+
+
+### [models.py](http://models.py)
+
+Defines domain models.
+
+### data_loader.py
+
+Loads input data.
+
+### [scorer.py](http://scorer.py)
+
+Evaluates itineraries.
+
+### [recommender.py](http://recommender.py)
+
+Generates ranked recommendations.
+
+### [app.py](http://app.py)
+
+Presentation layer only.
